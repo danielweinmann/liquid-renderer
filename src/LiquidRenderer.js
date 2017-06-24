@@ -6,8 +6,13 @@ class LiquidRenderer extends Component {
   state = { html: null }
 
   async getLiquidProperties() {
-    await fetch("https://api.github.com/users")
-    return { name: "Foo" }
+    const { username } = this.props
+    if (!username) {
+      return { name: "please pass a GitHub username in the query string, like '?username=your-username'" }
+    }
+    const response = await fetch(`https://api.github.com/users/${username}`)
+    const user = await response.json()
+    return { name: user.name }
   }
 
   async componentWillMount() {
