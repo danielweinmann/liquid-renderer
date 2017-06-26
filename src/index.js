@@ -1,18 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import LiquidRenderer from './LiquidRenderer'
-import registerServiceWorker from './registerServiceWorker'
+import { Engine } from 'liquid-node'
 import getVariables from './getVariables'
 
-const element = document.getElementById('liquid-renderer-root')
-const liquidHtml = element.innerHTML
-element.style.display = 'block'
-
-ReactDOM.render(
-  <LiquidRenderer
-    getVariables={getVariables}
-    liquidHtml={liquidHtml}
-  />,
-  element
-)
-registerServiceWorker()
+window.addEventListener('load', () => {
+  getVariables().then(variables => {
+    const engine = new Engine()
+    const liquidHtml = document.documentElement.innerHTML
+    engine
+      .parseAndRender(liquidHtml, variables)
+      .then(html => {
+        document.write(html)
+        const rootElement = document.getElementById('liquid-renderer-root')
+        const loadingElement = document.getElementById('liquid-renderer-loading')
+        rootElement.style.display = 'block'
+        loadingElement.style.display = 'none'
+      })
+  })
+})

@@ -7,7 +7,6 @@ async function getVariables() {
   }
   const user = await (await fetch(`https://api.github.com/users/${username}`)).json()
   const repos = await (await fetch(`https://api.github.com/users/${username}/repos`)).json()
-  console.log(repos)
   return { user, repos }
 }
 

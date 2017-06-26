@@ -4,10 +4,7 @@
   "private": true,
   "homepage": "https://danielweinmann.github.io/liquid-renderer",
   "dependencies": {
-    "liquid-node": "^2.6.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-loading-overlay": "^0.2.5"
+    "liquid-node": "^2.6.1"
   },
   "devDependencies": {
     "gh-pages": "^1.0.0",
