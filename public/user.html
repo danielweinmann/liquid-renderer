@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" media="all" href="liquid-renderer.css" />
-    <title>GitHub users</title>
+    <title>{{ user.name }}</title>
   </head>
   <body>
     <noscript>
@@ -14,6 +14,13 @@
       <h1>Loading...</h1>
     </div>
     <div id="liquid-renderer-root" style="display: none;">
+      <h1>{{user.name}}</h1>
+      <h2>Repositories</h2>
+      {% for repo in repos %}
+        <div>
+          <a href="{{repo.html_url}}" target="_blank">{{ repo.name }}</a>
+        </div>
+      {% endfor %}
     </div>
   </body>
 </html>
